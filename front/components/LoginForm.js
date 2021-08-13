@@ -7,11 +7,15 @@ const ButtonWrapper = styled.div`
   margin-top: 10px;
 `;
 
+const FormWrapper = styled(Form)`
+  padding: 10px;
+`;
+
 const LoginForm = ({ setIsLoggedIn }) => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
-  const onChangeId = useCallback(() => {
+  const onChangeId = useCallback((e) => {
     setId(e.target.value);
   }, []);
 
@@ -25,11 +29,11 @@ const LoginForm = ({ setIsLoggedIn }) => {
   }, [id, password]);
 
   return (
-    <Form onFinish={onSubmitForm}>
+    <FormWrapper onFinish={onSubmitForm}>
       <div>
         <label htmlFor="user-id">아이디</label>
         <br />
-        <Input name="user-id" value={id} onChange={onChangeId} required />
+        <Input name="user-id" value={id} onChange={onChangeId} />
       </div>
       <div>
         <label htmlFor="user-id">비밀번호</label>
@@ -52,7 +56,7 @@ const LoginForm = ({ setIsLoggedIn }) => {
           </a>
         </Link>
       </ButtonWrapper>
-    </Form>
+    </FormWrapper>
   );
 };
 
