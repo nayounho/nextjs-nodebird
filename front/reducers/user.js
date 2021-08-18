@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   isLoggedIn: false,
   user: null,
   signUpData: {},
@@ -18,7 +18,7 @@ export const logoutAction = (data) => {
   };
 };
 
-export const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "LOG_IN":
       return {
