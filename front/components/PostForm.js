@@ -1,5 +1,5 @@
 import { Button, Form, Input } from "antd";
-import { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addpost } from "../reducers/post";
 

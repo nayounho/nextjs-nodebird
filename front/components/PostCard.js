@@ -10,7 +10,7 @@ import {
 import { useSelector } from "react-redux";
 // import Avatar from "antd/lib/avatar/avatar";
 import PostImages from "./PostImages";
-import { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 import CommentForm from "./CommentForm";
 
 const PostCard = ({ post }) => {

@@ -1,6 +1,6 @@
 import { PlusOutlined } from "@ant-design/icons";
 import PropTypes from "prop-types";
-import { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 import ImagesZoom from "./ImagesZoom";
 
 const PostImages = ({ images }) => {
@@ -9,6 +9,7 @@ const PostImages = ({ images }) => {
   const onZoom = useCallback(() => {
     setShowImagesZoom(true);
   }, []);
+
   const onClose = useCallback(() => {
     setShowImagesZoom(false);
   }, []);
@@ -29,20 +30,22 @@ const PostImages = ({ images }) => {
   if (images.length === 2) {
     return (
       <>
-        <img
-          role="presentation"
-          style={{ width: "50%", display: "inline-block" }}
-          src={images[0].src}
-          alt={images[0].src}
-          onClick={onZoom}
-        />
-        <img
-          role="presentation"
-          style={{ width: "50%", display: "inline-block" }}
-          src={images[1].src}
-          alt={images[1].src}
-          onClick={onZoom}
-        />
+        <div>
+          <img
+            role="presentation"
+            src={images[0].src}
+            alt={images[0].src}
+            width="50%"
+            onClick={onZoom}
+          />
+          <img
+            role="presentation"
+            src={images[1].src}
+            alt={images[1].src}
+            width="50%"
+            onClick={onZoom}
+          />
+        </div>
         {showImagesZoom && <ImagesZoom images={images} onClose={onClose} />}
       </>
     );
@@ -52,9 +55,9 @@ const PostImages = ({ images }) => {
       <div>
         <img
           role="presentation"
-          style={{ width: "50%" }}
-          src={images[1].src}
-          alt={images[1].src}
+          src={images[0].src}
+          alt={images[0].src}
+          width="50%"
           onClick={onZoom}
         />
         <div
