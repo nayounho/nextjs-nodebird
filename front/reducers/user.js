@@ -1,5 +1,7 @@
 export const initialState = {
-  isLoggedIn: false,
+  isLoggedIn: false, //로그인 시도 중
+  isLoggingIn: false,
+  isLoggingOut: false, //로그아웃 시도 중
   me: null,
   signUpData: {},
   loginData: {},
@@ -11,32 +13,10 @@ export const loginRequestAction = (data) => {
     data,
   };
 };
-export const loginSuccessAction = (data) => {
-  return {
-    type: "LOG_IN_SUCCESS",
-    data,
-  };
-};
-export const loginFailureAction = (data) => {
-  return {
-    type: "LOG_IN_FAILURE",
-    data,
-  };
-};
 
 export const logoutRequestAction = () => {
   return {
     type: "LOG_OUT_REQUEST",
-  };
-};
-export const logoutSuccessction = () => {
-  return {
-    type: "LOG_OUT_SUCCESS",
-  };
-};
-export const logoutFailureAction = () => {
-  return {
-    type: "LOG_OUT_FAILURE",
   };
 };
 
@@ -45,14 +25,37 @@ const reducer = (state = initialState, action) => {
     case "LOG_IN_REQUEST":
       return {
         ...state,
+        isLoggingIn: true,
+      };
+    case "LOG_IN_SUCCESS":
+      return {
+        ...state,
+        isLoggingIn: false,
         isLoggedIn: true,
-        me: action.date,
+        me: { ...action.date, nickname: "younho" },
+      };
+    case "LOG_IN_FAILURE":
+      return {
+        ...state,
+        isLoggingIn: false,
+        isLoggedIn: false,
       };
     case "LOG_OUT_REQUEST":
       return {
         ...state,
+        isLoggingOut: true,
+      };
+    case "LOG_OUT_SUCCESS":
+      return {
+        ...state,
+        isLoggingOut: false,
         isLoggedIn: false,
         me: null,
+      };
+    case "LOG_OUT_FAILURE":
+      return {
+        ...state,
+        isLoggingOut: false,
       };
     default:
       return state;
