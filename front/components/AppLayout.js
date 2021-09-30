@@ -64,7 +64,7 @@ const AppLayout = ({ children }) => {
           <a
             href="https://github.com/nayounho"
             target="_blank"
-            rel="noreferer noopener"
+            rel="noreferrer noopener"
           >
             Made by YounhoNa
           </a>
